@@ -62,7 +62,7 @@ def inference(image, model):
 def main():
     st.title('Digit Recognition')
     st.title('Model: LeNet. Dataset: MNIST')
-    option = st.selectbox('How would you like to give the input?', ('Upload Image File', 'Example Image'))
+    option = st.selectbox('How would you like to give the input?', ('Upload Image File', 'Run Example Image'))
     if option == "Upload Image File":
         file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
         if file is not None:
