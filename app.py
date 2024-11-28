@@ -17,7 +17,7 @@ class LeNetClassifier(nn.Module):
         self.fc_1 = nn.Linear(16 * 5 * 5, 120)
         self.fc_2 = nn.Linear(120, 84)
         self.fc_3 = nn.Linear(84, num_classes)
-
+    
     def forward(self, inputs):
         outputs = self.conv1(inputs)
         outputs = self.avgpool1(outputs)
@@ -84,4 +84,4 @@ def main():
     st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
 if __name__ == '__main__':
-     main() 
+    main() 
