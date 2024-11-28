@@ -70,9 +70,9 @@ def main():
     
     if example_button:
         uploaded_img_path = 'demo_8.png'
-    else:
-        if uploaded_img is not None:
-              uploaded_img_path = uploaded_img
+    # else:
+    #     if uploaded_img is not None:
+    #           uploaded_img_path = uploaded_img
     p, label = inference(uploaded_img_path, model)
     st.image(uploaded_img_path)
     st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
