@@ -67,6 +67,8 @@ def main():
         file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
         if file is not None:
             image = Image.open(file)
+        else:
+            pass
 
     elif option == "Example Image":
         image = Image.open('demo_8.png')
