@@ -71,11 +71,11 @@ def main():
             st.image(image)
             st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
-    elif option == "Example Image":
+    elif option == "Run Example Image":
         image = Image.open('demo_8.png')
         p, label = inference(image, model)
         st.image(image)
-        st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
+        st.success(f"The image is of the digit {label} with {p:.2f} % probability.") 
 
 if __name__ == '__main__':
     main() 
