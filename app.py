@@ -1,7 +1,5 @@
 import os
 import torch
-import gdown
-import uuid
 import streamlit as st
 from PIL import Image
 import torchvision.transforms as transforms
