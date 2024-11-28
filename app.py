@@ -67,12 +67,9 @@ def main():
         file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
         if file is not None:
             image = Image.open(file)
-        else:
-            st.write('Run example image')
-            image = Image.open('demo_8.png')
-        p, label = inference(image, model)
-        st.image(image)
-        st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
+            p, label = inference(image, model)
+            st.image(image)
+            st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
     elif option == "Example Image":
         image = Image.open('demo_8.png')
