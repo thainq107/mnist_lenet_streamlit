@@ -63,17 +63,20 @@ def inference(img_path, model):
 def main():
     st.title('Digit Recognition')
     st.title('Model: LeNet. Dataset: MNIST')
-    uploaded_img = st.file_uploader('Input Image', type=['jpg', 'jpeg', 'png'])
-    print(uploaded_img)
-    example_button = st.button('Run example')
-    st.divider()
+    # uploaded_img = st.file_uploader('Input Image', type=['jpg', 'jpeg', 'png'])
+    # print(uploaded_img)
+    # example_button = st.button('Run example')
+    # st.divider()
     
-    if example_button:
-        uploaded_img_path = 'demo_8.png'
-    # else:
-    #     if uploaded_img is not None:
-    #           uploaded_img_path = uploaded_img
-    p, label = inference(uploaded_img_path, model)
+    # if example_button:
+    #     uploaded_img_path = 'demo_8.png'
+    # # else:
+    # #     if uploaded_img is not None:
+    # #           uploaded_img_path = uploaded_img
+
+    file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
+    if file is not None:
+        p, label = inference(file, model)
     st.image(uploaded_img_path)
     st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
