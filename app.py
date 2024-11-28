@@ -57,30 +57,20 @@ def inference(image, model):
         predictions = model(img_new)
     preds = nn.Softmax(dim=1)(predictions)
     p_max, yhat = torch.max(preds.data, 1)
-    return p_max.item(), yhat.item()
+    return p_max.item()*100, yhat.item()
 
 def main():
     st.title('Digit Recognition')
     st.title('Model: LeNet. Dataset: MNIST')
-    # uploaded_img = st.file_uploader('Input Image', type=['jpg', 'jpeg', 'png'])
-    # print(uploaded_img)
-    # example_button = st.button('Run example')
-    # st.divider()
-    
-    # if example_button:
-    #     uploaded_img_path = 'demo_8.png'
-    # # else:
-    # #     if uploaded_img is not None:
-    # #           uploaded_img_path = uploaded_img
+    option = st.selectbox('How would you like to give the input?', ('Upload Image File', 'Example Image'))
+    if option == "Upload Image File":
+        file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
+        if file is not None:
+            image = Image.open(file)
 
-    # file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
-    # if file is not None:
-    image = Image.open('demo_8.png')
+    elif option == "Example Image":
+        image = Image.open('demo_8.png')
     p, label = inference(image, model)
-    # st.write(p, label)
-    # if file is not None:
-    #     p, label = inference(file, model)
-    # st.image(file)
     st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
 if __name__ == '__main__':
