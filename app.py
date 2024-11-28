@@ -77,7 +77,7 @@ def main():
     file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
     if file is not None:
         p, label = inference(file, model)
-    st.image(uploaded_img_path)
+    st.image(file)
     st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
 if __name__ == '__main__':
