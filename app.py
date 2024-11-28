@@ -39,8 +39,7 @@ def load_model(model_path, num_classes=10):
     return lenet_model
 model = load_model('lenet_model.pt')
 
-def inference(img_path, model):
-    image = Image.open(img_path)
+def inference(image, model):
     w, h = image.size
     if w != h:
         crop = transforms.CenterCrop(min(w, h))
@@ -77,7 +76,8 @@ def main():
     file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
     if file is not None:
         image = Image.open(file)
-    st.write(image.size)
+        p, label = inference(file, model)
+    st.write(p, label)
     # if file is not None:
     #     p, label = inference(file, model)
     # st.image(file)
