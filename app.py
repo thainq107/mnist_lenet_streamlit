@@ -68,7 +68,8 @@ def main():
         if file is not None:
             image = Image.open(file)
         else:
-            pass
+            st.write('Run example image')
+            image = Image.open('demo_8.png')
 
     elif option == "Example Image":
         image = Image.open('demo_8.png')
