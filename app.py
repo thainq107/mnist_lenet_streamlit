@@ -60,20 +60,21 @@ def inference(img_path, model):
     return p_max.item(), yhat.item()
 
 def main():
-  st.title('Digit Recognition')
-  st.title('Model: LeNet. Dataset: MNIST')
-  uploaded_img = st.file_uploader('Input Image', type=['jpg', 'jpeg', 'png'])
-  example_button = st.button('Run example')
-  st.divider()
-  
-  if example_button:
+    st.title('Digit Recognition')
+    st.title('Model: LeNet. Dataset: MNIST')
+    uploaded_img = st.file_uploader('Input Image', type=['jpg', 'jpeg', 'png'])
+    print(uploaded_img)
+    example_button = st.button('Run example')
+    st.divider()
+    
+    if example_button:
     uploaded_img_path = 'demo_8.png'
-  else:
+    else:
     if uploaded_img is not None:
       uploaded_img_path = uploaded_img
-  p, label = inference(uploaded_img_path, model)
-  st.image(uploaded_img_path)
-  st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
+    p, label = inference(uploaded_img_path, model)
+    st.image(uploaded_img_path)
+    st.success(f"The uploaded image is of the digit {label} with {p:.2f} % probability.") 
 
 if __name__ == '__main__':
      main() 
