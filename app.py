@@ -33,7 +33,7 @@ class LeNetClassifier(nn.Module):
 @st.cache_resource
 def load_model(model_path, num_classes=10):
     lenet_model = LeNetClassifier(num_classes)
-    lenet_model.load_state_dict(torch.load(model_path, weights_only=True))
+    lenet_model.load_state_dict(torch.load(model_path, weights_only=True, map_location=torch.device('cpu')))
     lenet_model.eval()
     return lenet_model
 model = load_model('lenet_model.pt')
