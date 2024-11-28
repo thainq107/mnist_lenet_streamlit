@@ -75,7 +75,9 @@ def main():
     # #           uploaded_img_path = uploaded_img
 
     file = st.file_uploader("Please upload an image of a digit", type=["jpg", "png"])
-    st.write(file)
+    if file is not None:
+        image = Image.open(file)
+    st.write(image.size)
     # if file is not None:
     #     p, label = inference(file, model)
     # st.image(file)
