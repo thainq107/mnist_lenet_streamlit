@@ -9,14 +9,12 @@ import torchvision.transforms as transforms
 class LeNetClassifier(nn.Module):
     def __init__(self, num_classes):
         super().__init__()
-        self.conv1 = nn.Conv2d(
-            in_channels=3, out_channels=6, kernel_size=5, padding='same'
-        )
+        self.conv1 = nn.Conv2d(in_channels=1, out_channels=6, kernel_size=5, padding='same')
         self.avgpool1 = nn.AvgPool2d(kernel_size=2)
         self.conv2 = nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5)
         self.avgpool2 = nn.AvgPool2d(kernel_size=2)
         self.flatten = nn.Flatten()
-        self.fc_1 = nn.Linear(16 * 35 * 35, 120)
+        self.fc_1 = nn.Linear(16 * 5 * 5, 120)
         self.fc_2 = nn.Linear(120, 84)
         self.fc_3 = nn.Linear(84, num_classes)
 
